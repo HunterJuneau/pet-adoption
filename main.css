@@ -1,0 +1,97 @@
+body {
+    background-color: #3F51B5;
+    color: #212121;
+}
+
+#button-container {
+    background-color: #303F9F;
+    border: 1px solid #BDBDBD;
+    margin: auto;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.filter-button {
+    margin: 10px;
+    font-size: 16px;
+    border: 3px solid;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+}
+
+#all-button {
+    border-color: #FF5252;
+}
+
+#all-button:hover {
+    background-color: #FF5252;
+}
+
+#dogs-button {
+    border-color: turquoise;
+}
+
+#dogs-button:hover {
+    background-color: turquoise;
+}
+
+#cats-button {
+    border-color: silver;
+}
+
+#cats-button:hover {
+    background-color: silver;
+}
+
+#dinos-button {
+    border-color: yellow;
+}
+
+#dinos-button:hover {
+    background-color: yellow;
+}
+
+#pet-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.pet-card {
+    background-color: #C5CAE9;
+    border: 5px solid #BDBDBD;
+    margin: 10px;
+    padding: 10px;
+    font-family: 'Abril Fatface', cursive;
+    width: 200px;
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    box-shadow: 10px 10px 5px #303F9F;
+}
+
+h3 {
+    background-color: #303F9F;
+    color: #FFFFFF;
+}
+
+img {
+    border: 5px solid #BDBDBD;
+    align-self: center;
+    width: 80%;
+}
+
+.dog-footer {
+    background-color: turquoise;
+}
+
+.cat-footer {
+    background-color: silver;
+}
+
+.dino-footer {
+    background-color: yellow;
+}
