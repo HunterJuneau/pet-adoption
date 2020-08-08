@@ -244,26 +244,47 @@ const pets = [
 	},
 ];
 
-
 const printToDom = (divId, textToPrint) => {
-	const selectedDiv = document.getElementById(divId);
-    selectedDiv.innerHTML = textToPrint;
+	const selectedDiv = document.getElementById(`${divId}`);
+	selectedDiv.innerHTML = textToPrint;
 };
 
 const buildPets = () => {
-    let domString = '';
+	let domString = '';
 
-    for (let i = 0; i < pets.length; i++) {
-        domString += `<div class="pet-card ${pets[i].type}">`
-        domString += `<h3>${pets[i].name}</h3>`
-        domString += `<img src="${pets[i].imageUrl}" alt="${pets[i].name}">`
-        domString += `<div>Color: ${pets[i].color}</div>`
-        domString += `<p>${pets[i].specialSkill}</p>`
-        domString += `<footer class="${pets[i].type}-footer">${pets[i].type}</footer>`
-        domString += '</div>'
-    }
+	for (let i = 0; i < pets.length; i++) {
+		domString += `<div class="pet-card ${pets[i].type}">
+		<h3>${pets[i].name}</h3>
+		domString += <img src="" alt="${pets[i].name}">
+		<div>Color: ${pets[i].color}</div>
+		<p>${pets[i].specialSkill}</p>
+		<footer class="${pets[i].type}-footer">${pets[i].type}</footer>
+		</div>`;
+	}
 
-    printToDom('pet-container', domString)
-}
+	printToDom('pet-container', domString);
+};
 
-buildPets()
+const buttonClick = () => {
+	document
+		.getElementById('button-container')
+		.addEventListener('click', filterPets);
+};
+
+const filterPets = (clickedId) => {
+	if (clickedId === 'all-button') {
+		buildPets();
+	} else if (clickedId === 'dogs-button') {
+		buildDogs();
+	} else if (clickedId === 'cats-button') {
+		buildCats();
+	} else if (clickedId === 'dinos-button') {
+		buildDinos();
+	}
+};
+
+const init = () => {
+	buildPets();
+};
+
+init();
