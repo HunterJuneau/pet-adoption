@@ -1,9 +1,7 @@
-'use strict';
-
 const pets = [
 	{
 		name: 'Dusty',
-		color: 'Grey',
+		color: 'Green',
 		specialSkill: 'Gives sincere apologies.',
 		type: 'cat',
 		imageUrl:
@@ -244,26 +242,60 @@ const pets = [
 	},
 ];
 
-
-const printToDom = (divId, textToPrint) => {
-	const selectedDiv = document.getElementById(divId);
-    selectedDiv.innerHTML = textToPrint;
+const buildPets = (array, type = 'all') => {
+	$('#pet-container').html('');
+	array.forEach((item, index) => {
+		if (type === 'all') {
+			$('#pet-container').append(
+				`<div class="card" id="pet-card-${index}" style="width: 18rem;">
+			 <img src="${item.imageUrl}" class="card-img-top" alt="${item.name}">
+			 <div class="card-body d-flex flex-column justify-content-between">
+				 <h5 class="card-title">${item.name}</h5>
+				 <h6 class="card-subtitle mb-2 text-muted">${item.color}</h6>
+    			 <p class="card-text">${item.specialSkill}</p>
+    			 <div class="card-footer">${item.type}</div>
+  			 </div>
+		 	 </div>`
+			);
+		} else {
+			if (item.type === type) {
+				$('#pet-container').append(
+					`<div class="card" id="pet-card-${index}" style="width: 18rem;">
+				 <img src="${item.imageUrl}" class="card-img-top" alt="${item.name}">
+				 <div class="card-body d-flex flex-column justify-content-between">
+					 <h5 class="card-title">${item.name}</h5>
+					 <h6 class="card-subtitle mb-2 text-muted">${item.color}</h6>
+					 <p class="card-text">${item.specialSkill}</p>
+					 <div class="card-footer">${item.type}</div>
+				   </div>
+				  </div>`
+				);
+			}
+		}
+	});
 };
 
-const buildPets = () => {
-    let domString = '';
+const filterPets = () => {
+	$('#all-button').on('click', () => {
+		buildPets(pets);
+	});
 
-    for (let i = 0; i < pets.length; i++) {
-        domString += `<div class="pet-card ${pets[i].type}">`
-        domString += `<h3>${pets[i].name}</h3>`
-        domString += `<img src="${pets[i].imageUrl}" alt="${pets[i].name}">`
-        domString += `<div>Color: ${pets[i].color}</div>`
-        domString += `<p>${pets[i].specialSkill}</p>`
-        domString += `<footer class="${pets[i].type}-footer">${pets[i].type}</footer>`
-        domString += '</div>'
-    }
+	$('#cats-button').on('click', () => {
+		buildPets(pets, 'cat');
+	});
 
-    printToDom('pet-container', domString)
-}
+	$('#dogs-button').on('click', () => {
+		buildPets(pets, 'dog');
+	});
 
-buildPets()
+	$('#dinos-button').on('click', () => {
+		buildPets(pets, 'dino');
+	});
+};
+
+const init = () => {
+	buildPets(pets);
+	filterPets();
+};
+
+init();
